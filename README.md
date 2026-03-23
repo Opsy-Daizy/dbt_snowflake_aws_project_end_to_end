@@ -113,10 +113,50 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
+```
 
-👤 Author
+## 2️⃣ Configure dbt Profile
+
+Create a file at:
+
+~/.dbt/profiles.yml
+
+
+Add your Snowflake credentials (do not commit this file).
+
+---
+
+## 3️⃣ Load Data
+
+Upload Airbnb CSV files into Snowflake staging tables.
+
+---
+
+## 4️⃣ Run Pipeline
+
+```bash
+dbt debug
+dbt run
+dbt test
+dbt snapshot
+```
+
+## 📈 What This Project Demonstrates
+- End-to-end data pipeline design
+- Medallion architecture implementation
+- Incremental processing at scale
+- Historical tracking with SCD Type 2
+- Production-style dbt structure
+- Strong data modeling practices
+
+## 👤 Author
 
 Opeyemi Ijidakinro
 Data Engineering Portfolio Project
 
 Tech Stack: AWS · Snowflake · dbt · Python
+
+## ⭐ Acknowledgment
+
+This project was inspired by publicly available data engineering workflows.
+Enhancements were made to improve structure, scalability, and production readiness.
