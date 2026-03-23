@@ -1,0 +1,12 @@
+snowflake_project:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: YOUR_ACCOUNT
+      user: YOUR_USER
+      password: YOUR_PASSWORD
+      role: TRANSFORMER
+      database: AIRBNB
+      warehouse: COMPUTE_WH
+      schema: DBT_DEV
