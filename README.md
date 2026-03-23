@@ -152,6 +152,7 @@ dbt snapshot
 ## 👤 Author
 
 Opeyemi Ijidakinro
+
 Data Engineering Portfolio Project
 
 Tech Stack: AWS · Snowflake · dbt · Python
