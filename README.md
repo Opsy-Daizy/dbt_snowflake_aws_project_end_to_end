@@ -1,51 +1,56 @@
-# aws_dbt_snowflake_project
+# 🏠 Airbnb Data Engineering Pipeline
 
-
-🏠 **Airbnb End-to-End Data Engineering Pipeline**
+![AWS](https://img.shields.io/badge/AWS-S3-orange)
+![Snowflake](https://img.shields.io/badge/Snowflake-Data%20Warehouse-blue)
+![dbt](https://img.shields.io/badge/dbt-Transformation-orange)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Status](https://img.shields.io/badge/Status-Production--Style-success)
 
 ---
 
 ## 📌 Overview
 
-This project demonstrates an **end-to-end data engineering pipeline** built using **AWS, Snowflake, and dbt**.  
-The goal is to ingest raw Airbnb data, apply scalable transformations using a **medallion architecture**, and produce **analytics-ready datasets** for reporting and insights.
+This project demonstrates a **production-style data engineering pipeline** built using **AWS, Snowflake, and dbt** to process Airbnb data from raw ingestion to analytics-ready datasets.
 
-The pipeline supports:
-- Incremental data loading  
-- Historical tracking using **Slowly Changing Dimensions (SCD Type 2)**  
-- Industry-standard data engineering best practices  
+The pipeline is designed with scalability and maintainability in mind, leveraging a **medallion architecture (Bronze → Silver → Gold)** to progressively refine data for business use.
 
 ---
 
 ## 🏗️ Architecture
 
-### Data Flow
+### 🔄 Data Flow
 
-CSV Files → AWS S3 → Snowflake Staging → Bronze → Silver → Gold
 
-### Layer Responsibilities
+### 🧱 Layer Responsibilities
 
-- **Bronze** → Raw ingested data  
-- **Silver** → Cleaned & standardized data  
-- **Gold** → Business-ready analytics tables  
+| Layer   | Purpose |
+|--------|--------|
+| Bronze | Raw ingestion with minimal transformation |
+| Silver | Data cleaning, validation, and standardization |
+| Gold   | Business-ready models optimized for analytics |
 
 ---
 
-## 🧰 Technology Stack
+## 🧰 Tech Stack
 
-- **Cloud Storage**: AWS S3  
-- **Data Warehouse**: Snowflake  
-- **Transformation Tool**: dbt  
-- **Programming Language**: Python 3.12  
-- **Version Control**: Git  
+| Category | Tools |
+|--------|------|
+| Cloud Storage | AWS S3 |
+| Data Warehouse | Snowflake |
+| Transformation | dbt |
+| Language | Python 3.12 |
+| Version Control | Git |
 
-### Key dbt Features Used
+---
 
-- Incremental models  
-- Snapshots (SCD Type 2)  
-- Jinja templating  
-- Custom macros  
-- Tests & documentation  
+## ⚙️ Key Features
+
+- 🔁 **Incremental Processing** for scalable data pipelines  
+- 🕒 **SCD Type 2 Snapshots** for historical tracking  
+- 🧩 **Modular dbt Models** for maintainability  
+- 🔄 **Reusable Macros** for dynamic transformations  
+- ✅ **Data Quality Tests** for reliability  
+- 📊 **Analytics-Ready Tables** for reporting  
 
 ---
 
@@ -53,110 +58,65 @@ CSV Files → AWS S3 → Snowflake Staging → Bronze → Silver → Gold
 
 ### 🥉 Bronze Layer (Raw)
 
-Tables:
 - `bronze_bookings`
 - `bronze_hosts`
 - `bronze_listings`
 
-Minimal transformations are applied. Data is stored as received from the source.
+Stores raw source data with minimal processing.
 
 ---
 
-### 🥈 Silver Layer (Cleaned)
+### 🥈 Silver Layer (Refined)
 
-Key transformations:
-- Data validation  
-- Standardized formats  
-- Business logic (price bucketing, quality checks)  
-
-Tables:
 - `silver_bookings`
 - `silver_hosts`
 - `silver_listings`
+
+Applies:
+- Data cleansing  
+- Standardization  
+- Business rules  
 
 ---
 
 ### 🥇 Gold Layer (Analytics)
 
-Optimized for reporting and BI consumption.
-
-Tables:
 - `fact`
 - `obt` (One Big Table)
 
+Optimized for BI tools and reporting.
+
 ---
 
-## ⏳ Slowly Changing Dimensions (SCD Type 2)
+## ⏳ Historical Data Tracking
 
-Snapshots are used to track historical changes for:
+This project uses **dbt snapshots** to implement **Slowly Changing Dimensions (SCD Type 2)**.
+
+Tracked entities:
 - Hosts  
 - Listings  
 - Bookings  
 
-This enables **point-in-time analysis** and preserves historical records automatically using **dbt snapshots**.
-
+Enables:
+- Point-in-time analysis  
+- Historical trend analysis  
+- Auditability of changes  
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 Getting Started
 
-### 1️⃣ Setup Python Environment
+### 1️⃣ Set Up Environment
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-### 2️⃣ Configure Snowflake
-
-Create `~/.dbt/profiles.yml` with your Snowflake credentials.
-
----
-
-### 3️⃣ Load Source Data
-
-Upload CSV files into Snowflake staging tables.
-
----
-
-### 4️⃣ Run dbt Commands
-
-```bash
-dbt debug
-dbt run
-dbt test
-dbt snapshot
-
-```
 
 
-## ⭐ Key Features & Learnings
+👤 Author
 
-- Designed a **medallion architecture** in Snowflake
-- Implemented **incremental loading** for scalable pipelines
-- Used **dbt snapshots** for SCD Type 2 tracking
-- Built **reusable custom dbt macros**
-- Applied **data quality tests and documentation**
-- Followed **production-style folder and model structure**
+Opeyemi Ijidakinro
+Data Engineering Portfolio Project
 
----
-
-## 🔐 Best Practices Followed
-
-- No credentials committed to Git
-- Layer-wise schema separation
-- Incremental processing for performance
-- Modular and reusable SQL models
-
----
-
-## 👤 Author
-
-**Eswar Kandula**  
-Data Engineering Portfolio Project  
-
-**Technologies**: AWS, Snowflake, dbt, Python
-
-
-
+Tech Stack: AWS · Snowflake · dbt · Python
